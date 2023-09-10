@@ -1,40 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:shopping/widgets/button.dart';
+import 'package:provider/provider.dart';
+import 'package:shopping/provider/item_provider.dart';
+import 'package:shopping/widgets/card_item.dart';
 
-class InitialScreen extends StatelessWidget {
+class InitialScreen extends StatefulWidget {
   const InitialScreen({super.key});
 
   @override
+  State<InitialScreen> createState() => _InitialScreenState();
+}
+
+class _InitialScreenState extends State<InitialScreen> {
+  @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ButtonWidget(
-                  icon: Icons.abc,
-                  text: 'Casacos',
-                ),
-                ButtonWidget(
-                  icon: Icons.abc,
-                  text: 'Calças',
-                ),
-                ButtonWidget(
-                  icon: Icons.abc,
-                  text: 'Saias',
-                ),
-                ButtonWidget(
-                  icon: Icons.abc,
-                  text: 'Camisas',
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
+    final list = Provider.of<ItemProvider>(context).listItens;
+    return Scaffold(
+      body: ListView.builder(
+        physics: const BouncingScrollPhysics(),
+        itemCount: list.length,
+        itemBuilder: (context, index) => CardItem(item: list[index]),
+      )
     );
   }
 }

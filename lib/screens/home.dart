@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping/screens/feminine.dart';
 import 'package:shopping/screens/initial.dart';
-import 'package:shopping/screens/masculine.dart';
+import 'package:shopping/screens/account.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             InitialScreen(),
             FeminineScreen(),
-            MasculineScreen(),
+            AccountScreen(),
           ])
       ),
     );
